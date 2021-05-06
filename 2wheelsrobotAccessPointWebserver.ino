@@ -86,8 +86,6 @@ void loop() {
         servospeed2 = right.toInt();
         myservo1.write(servospeed1);
         myservo2.write(servospeed2);
-        url = "<a href=?left=90&right=90>STOP</a>";
-        server.send(200, "text/html", url);
       }     
     }
 
