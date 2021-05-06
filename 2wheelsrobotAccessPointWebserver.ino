@@ -1,3 +1,18 @@
+/*
+*  Source code for uploading to your ESP8266.
+*  This program shows will provide a wifi access point and host a simple web page.  
+*  When you connect to the accesspoint "ESP8266ROBOT" with password "ESP8266ROBOT", you can surf to the controllers page.
+*  Your wifi card will get an IP and a gateway address (ip of the accesspoint).  Browse to http://192.168.4.1 (ip accesspoint)
+*  By passing left and right in the URL you can drive 2 servo motors.
+*  A standard hobby servo(360 degrees) will run forward for values between 0 and 90, and backward for values between 90 and 180.  When you enter
+*  90 the servo will stop.
+*  example :  http://192.168.1.4/?left=0&right=0 (servo left and right full speed forward)
+*  example :  http://192.168.1.4/?left=180&right=180 (servo left and right full speed backward)
+*  example :  http://192.168.1.4/?left=90&right=90 (servo left and right stop)
+*  example :  http://192.168.1.4/?left=45&right=10 (servo left half speed and right very slow speed)
+*/
+
+
 
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
