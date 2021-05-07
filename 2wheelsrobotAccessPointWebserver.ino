@@ -34,7 +34,7 @@ int servospeed2 = 90;
 String url;
 
 
-#include "Servo.h"
+#include "Servo.h";
 
 int servo_pin1 = D6;  // for ESP8266 microcontroller
 int servo_pin2 = D7;  // for ESP8266 microcontroller
