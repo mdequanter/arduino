@@ -6,7 +6,12 @@
  * You can launch the rosserial socket server with
  * roslaunch rosserial_server socket.launch
  * The default port is 11411
- *
+ * Installation :
+ *  Make sure you installed :  rosserial_arduino
+ * To start set your ROSCORE server IP in IPAddress server and set your SSID and PASSWORD, make sure to connect to the same network.
+ * Execute :  roscore,  
+ * then rosrun rosserial_python serial_node.py tcp
+ * To see messages run :  rostopic echo /chatter
  */
 #include <ESP8266WiFi.h>
 #include <ros.h>
