@@ -8,3 +8,7 @@ This will help a lot!
 
 After all is setup, you can upload the code examples to your ESP8266!
 
+I will also include code to connect your ESP8266 to ROS (Robotics operating system).
+
+
+
