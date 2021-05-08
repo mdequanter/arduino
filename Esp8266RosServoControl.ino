@@ -3,6 +3,7 @@
  * Control robot via keyboard :  rosrun teleop_twist_keyboard teleop_twist_keyboard.py
  * messages are subscribed to "cmd_vel".
  * These commands are used in arduino. See code : esp8266RosServoControl.ino
+ * Because servo's are mounted in mirror, you need to switch direction. So servo's run in same direction.
  * This intend to connect to a Wifi Access Point
  * and a rosserial socket server.
  * You can launch the rosserial socket server with
@@ -70,6 +71,7 @@ void roverCallBack(const geometry_msgs::Twist& cmd_vel)
       {
         if(cmd_vel.linear.x == 0 && cmd_vel.angular.z < 0)
         {
+          // right
           servo1.write(180);
           servo2.write(180);
         }
@@ -77,12 +79,13 @@ void roverCallBack(const geometry_msgs::Twist& cmd_vel)
         {
           if(cmd_vel.linear.x < 0 && cmd_vel.angular.z == 0)
           {
+            // back
             servo1.write(180);
             servo2.write(0);
           }
           else
           {
-            Serial.println("6");
+            //Serial.println("6");
           }
         }
       }
