@@ -1,6 +1,8 @@
 /*
  * rosserial Publisher Example
- * Prints "hello world!"
+ * Control robot via keyboard :  rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+ * messages are subscribed to "cmd_vel".
+ * These commands are used in arduino. See code : esp8266RosServoControl.ino
  * This intend to connect to a Wifi Access Point
  * and a rosserial socket server.
  * You can launch the rosserial socket server with
