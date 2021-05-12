@@ -1,6 +1,4 @@
-// # Editor     : roker
-// # Date       : 05.03.2018
-
+// # Editor     : Maarten Dequanter
 // # Product name: URM V5.0 ultrasonic sensor
 // # Product SKU : SEN0001
 // # Version     : 1.0
