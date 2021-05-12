@@ -1,44 +1,64 @@
-/*  Arduino DC Motor Control - PWM | H-Bridge | L298N
-    by Maarten Dequanter
-    controls 2 motors by using Hual H-Bridge vI.3 board
-    Connect E1 to pin 6,  M1 to 7,  E2 to 5 and M2 to 4
-    Connect 2 resistors of 1MOhm or more to VS and ground in serie.  In the middle you should have the voltage devided by to and read by Analog input A0
-    Connect 2 motors to Motor connectors
-    Connect VD to 5V pin on arduino and GND to GND pin on Arduino.
+// # Editor     : roker
+// # Date       : 05.03.2018
 
-    The motors should start running and will stop as soon the voltage is less then the value in lowValue.
+// # Product name: URM V5.0 ultrasonic sensor
+// # Product SKU : SEN0001
+// # Version     : 1.0
 
-    Add your own logic to drive PWM signals to in1 and in3 and control direction with in2 and in4.
-   
-*/
-
-#define in1 6
-#define in2 7
-#define in3 5
-#define in4 4
-#define led 12
-#define button 4
-int rotDirection = 0;
-int speed = 0;
-int lowBattery = 0;
-float MaxVoltage = 7.8;
-float lowVoltage = MaxVoltage*0.8;
+// # Description:
+// # The sketch for using the URM37 autonomous  mode from DFRobot
+// #   and writes the values to the serialport
 
 
-void setup() {
-  Serial.begin(9600);
+// # Connection:
+// #       Vcc (Arduino)      -> Pin 1 VCC (URM V5.0)
+// #       GND (Arduino)      -> Pin 2 GND (URM V5.0)
+// #       Pin 3 (Arduino)    -> Pin 4 ECHO (URM V5.0)
+// #       Pin TX1 (Arduino)  -> Pin 8 RXD (URM V5.0)
+// #       Pin RX0 (Arduino)  -> Pin 9 TXD (URM V5.0)
+// # Working Mode:  Automatic measurement model.
 
+int URECHO = 3; // PWM Output 0－25000US，Every 50US represent 1cm
 
+unsigned int Distance = 0;
+uint8_t AutomaticModelCmd[4] = {0x44, 0x02, 0xaa, 0xf0}; // distance measure command
+
+void setup() 
+{                                
+  Serial.begin(9600);           // Serial initialization           
+  delay(5000);                   // wait for sensor setup
+  AutomaticModelSetup();        //Automatic measurement model set
 }
-void loop() {
-  delay (200);
-  int sensorValue = analogRead(A0);
-  float voltage = sensorValue;
-  Serial.println(voltage);
-  
 
-  
-  
-  
+void loop()
+{
+  AutomaticMeasurement();
+  delay(100);
+}                      
 
+
+void AutomaticModelSetup(void)
+{
+  pinMode(URECHO, INPUT);                      
+  for (int i = 0; i < 4; i++)
+  {
+    Serial.write(AutomaticModelCmd[i]);// Sending Automatic measurement model command
+  }
+}
+
+
+void AutomaticMeasurement(void)
+{
+  unsigned long DistanceMeasured = pulseIn(URECHO, LOW);
+  if (DistanceMeasured >= 50000) // the reading is invalid.
+  {
+    Serial.print("Invalid");
+  }
+  else
+  {
+    Distance = DistanceMeasured / 50;       // every 50us low level stands for 1cm
+    Serial.print("Distance=");
+    Serial.print(Distance);
+    Serial.println("cm");
+  }
 }
