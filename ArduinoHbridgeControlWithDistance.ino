@@ -3,6 +3,8 @@
 // # Product SKU : SEN0001
 // # Version     : 1.0
 
+// see manual :  https://wiki.dfrobot.com/URM37_V5.0_Ultrasonic_Sensor_SKU_SEN0001_
+
 // # Description:
 // # The sketch for using the URM37 autonomous  mode from DFRobot
 // #   and writes the values to the serialport
