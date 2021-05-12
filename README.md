@@ -1,5 +1,5 @@
 # esp8266
-All code trat runs on an ESP8266
+All code trat runs on an ESP8266 or an Arduino
 
 
 I used following tutorial to install the ESP8266 and start programming with Arduino IDE
