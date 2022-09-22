@@ -41,8 +41,8 @@ float distanceInch;
 
 
 
-const char* ssid     = "DINNO";
-const char* password = "geheim123$";
+const char* ssid     = "xxxx";
+const char* password = "xxx";
 // Set the rosserial socket server IP address
 IPAddress server(192,168,68,75);
 // Set the rosserial socket server port
